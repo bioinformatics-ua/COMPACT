@@ -1,2 +1,2 @@
 # COMPACT
-Compressor Benchmark Taxonomic Classification
+COMPressor tAxonomic ClassificaTion
