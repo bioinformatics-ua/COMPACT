@@ -18,11 +18,10 @@ numberOfEntries = {
     "archaea" : 10,
     "fungi" : 10,
     "plant" : 10,
-    "protozoa" : 10,
-    "mitochondrion" : 10,
-    "plastid" : 10
+    "protozoa" : 10
 }
 multiColumnPos = 19
+
 
 def main(split=False):
     selectedSequences = getSequences()
@@ -31,11 +30,12 @@ def main(split=False):
     else:
         _initialize()
         downloadSequences(selectedSequences["from_url"], dstPathOfOriginalSequences)
-        copySequences(selectedSequences["from_db"], locationOfDatabases, dstPathOfOriginalSequences)
+
 
 def _initialize():
     if not path.exists(dstPathOfOriginalSequences):
         makedirs(dstPathOfOriginalSequences)
+
 
 def splitSequences(selectedSequences, dstPathOfOriginalSequences):
     allFiles = [f for f in listdir(dstPathOfOriginalSequences) if isfile(join(dstPathOfOriginalSequences, f))]
@@ -52,6 +52,7 @@ def splitSequences(selectedSequences, dstPathOfOriginalSequences):
                 shutil.move(join(dstPathOfOriginalSequences, fileToMove), dst)
     print("Done!")
 
+
 def getSequences():
     selectedSequences = {
         "from_url":{},
@@ -64,11 +65,9 @@ def getSequences():
             content = fp.readlines()
             lenOfFile = len(content)
             listOfValues = sorted(random.sample(range(0, lenOfFile), numberOfEntries[domain]))
-            if "mitochondrion" in domain or "plastid" in domain:
-                selectedSequences["from_db"][domain] = _getRandomEntries(listOfValues, content, True)
-            else:
-                selectedSequences["from_url"][domain] = _getRandomEntries(listOfValues, content)
+            selectedSequences["from_url"][domain] = _getRandomEntries(listOfValues, content)
     return selectedSequences
+
 
 def _getRandomEntries(listOfValues, content, singleColumn=False):
     readsOfInterest = []
@@ -91,22 +90,6 @@ def downloadSequences(selectedSequences, dst):
                     print(f"Downloading {fLink}")
                     wget.download(fLink, out=dst)
 
-def copySequences(selectedSequences, source, dst):
-    for domain in selectedSequences:
-        if domain == "plastid":
-            mainPath = join(source, "NCBI-Plastid/NM-plastid/")
-            _move(selectedSequences[domain], mainPath, dst)
-        elif domain == "mitochondrion":
-            mainPath = join(source, "NCBI-Mitochondrial/NM-mitochondrion/")
-            _move(selectedSequences[domain], mainPath, dst)
-        else:
-            print(f"WARNING: Something is wrong! Domain {domain} not found")
-
-def _move(selectedSequences, mainPath, dst):
-    for entry in selectedSequences:
-        path = join(mainPath, entry)
-        fileDst = join(dst, entry)
-        shutil.copyfile(path, fileDst)
 
 if __name__ == "__main__":
     split = False
