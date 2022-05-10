@@ -1,3 +1,6 @@
 *.DS_Store
 aux/references/*
 aux/original_sequences/*
+compressors/*
+compressors_files/*
+src/__pycache__/
