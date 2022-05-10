@@ -23,13 +23,11 @@ numberOfEntries = {
 multiColumnPos = 19
 
 
-def main(split=False):
+def main():
     selectedSequences = getSequences()
-    if split:
-        splitSequences(selectedSequences, dstPathOfOriginalSequences)
-    else:
-        _initialize()
-        downloadSequences(selectedSequences["from_url"], dstPathOfOriginalSequences)
+    _initialize()
+    downloadSequences(selectedSequences["from_url"], dstPathOfOriginalSequences)
+    splitSequences(selectedSequences, dstPathOfOriginalSequences)
 
 
 def _initialize():
@@ -92,9 +90,6 @@ def downloadSequences(selectedSequences, dst):
 
 
 if __name__ == "__main__":
-    split = False
-    if len(sys.argv) > 1:
-        split = "-s" in sys.argv[1]
-    main(split)
+    main()
 
     
