@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  src:
+    container_name: compact
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/compact/
