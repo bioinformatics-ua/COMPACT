@@ -87,8 +87,8 @@ def downloadSequences(selectedSequences, dst):
             for link in soup.find_all('a'):
                 if "genomic.fna.gz" in link.get('href') and "from_genomic" not in link.get('href'):
                     fLink = join(entry, link.get('href'))
-                    print(f"Downloading {fLink}")
-                    wget.download(fLink, out=dst)
+                    print(f"Downloading {fLink} to {dst}")
+                    wget.download(fLink, out=str(dst))
 
 
 if __name__ == "__main__":
