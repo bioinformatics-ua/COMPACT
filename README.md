@@ -24,7 +24,7 @@ docker-compose up -d && docker exec -it compact bash && docker-compose down
 ## Install Compressors
 Give run Install Compressors for Benchmark:
 ``` bash
-bash Make.sh;
+bash install_compressors.sh;
 ```
 
 ## Result Replication
