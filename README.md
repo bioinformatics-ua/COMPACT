@@ -40,3 +40,11 @@ For obtaining random sequences for performance test run:
 cd src/
 python3 getRandomSequences.py 
 ```
+
+## Bsseline test
+For baseline compression test run:
+
+``` bash
+cd src/
+python3 compress_baseline.py
+```
