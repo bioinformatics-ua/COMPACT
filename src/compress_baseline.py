@@ -2,7 +2,7 @@
 #!/usr/bin/env python
 
 '''
-  Usage: python3 src/compress_baseline.py
+  Usage: python3 compress_baseline.py
 '''
 
 import os
