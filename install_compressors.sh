@@ -26,9 +26,11 @@ Pufferfish_Installation() {
     #./pufferfish -i <input file> -o <output file> [-c] | [-d]
     cd $compressor_files_path
     git clone https://github.com/alexholehouse/pufferfish.git
-    cd pufferfish
-    ./install
-    cd "../.."
+    cd pufferfish/src
+    make 
+    mv  pufferfish ../../../${compressor_path}
+    make clean > /dev/null
+    cd "../../.."
 
 }
 
@@ -37,14 +39,14 @@ MFCompress_Installation() {
     # ./compress fastq_file.fastq 
     cd $compressor_files_path
     git clone https://github.uconn.edu/sya12005/LFastqC
-    cp LFastqC/compress "../${compressor_path}" 
+    cp LFastqC/MFcompress/MFCompressC "../${compressor_path}" 
     cd ".."
 }
 
 UHT_Installation() {
     cd $compressor_files_path
     git clone https://github.com/aalokaily/Unbalanced-Huffman-Tree
-    cp Unbalanced-Huffman-Tree/dist/UHTL_compress/UHTL_compress "../${compressor_path}"
+    cp Unbalanced-Huffman-Tree/dist/UHT_compress/UHT_compress "../${compressor_path}"
     cd ..
 }
 
@@ -52,7 +54,7 @@ NAF_Installation() {
     # ennaf file.fa -o file.naf
     cd $compressor_files_path
     git clone --recurse-submodules https://github.com/KirillKryukov/naf.git
-    cd naf && make && make test && sudo make install
+    cd naf && make && make test && make install
     cp ennaf/ennaf "../../${compressor_path}"
     cd "../.."
 }
@@ -60,18 +62,18 @@ NAF_Installation() {
 NUHT_Installation() {
     cd $compressor_files_path
     git clone https://github.uconn.edu/sya12005/Non-Greedy-Unbalanced-Huffman-Tree-Compressor-for-single-and-multi-fasta-files.git
-    cp Non-Greedy-Unbalanced-Huffman-Tree-Compressor-for-single-and-multi-fasta-files/Linux/NUHT_Compress "../${compressor_path}"
     cd "..";
 }
 
+conda install -c conda-forge libgcc-ng --yes
 conda install -y -c bioconda jarvis --yes
 conda install -c bioconda geco3 --yes
-
-Pufferfish_Installation;
+# conda install -c bioconda naf --yes
+conda install -c cobilab gto --yes 
+UHT_Installation;
 MFCompress_Installation;
-NAF_Installation;
 UHT_Installation;
 NUHT_Installation;
 Cmix_Installation;
-chmod +x compressor_path/*
+chmod +x compressors/*
 
