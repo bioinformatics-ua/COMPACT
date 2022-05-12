@@ -132,8 +132,6 @@ def getCompressionValues():
                 csvEntry["gzip_comp"] = str(cmp_sz/decompressed_sz*2)
                 csvEntry["gzip_time"] = elapsed_time_gzip
                 
-                
-                
                 #NUHT
                 start_nuht = time.time()
                 os.system(f'{compressors_path}NUHT_Compress  {tmpPath}/decompressed.fna')
