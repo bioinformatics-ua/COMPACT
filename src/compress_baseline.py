@@ -164,14 +164,14 @@ def getCompressionValues():
                 csvEntry["MFCompress_time"] = elapsed_time_mfc
 
                 #CMIX
-                start_cmix = time.time()
-                os.system(f"{compressors_path}cmix -c {tmpPath}/GENOME_FILE {tmpPath}/cmix.seq")
-                end_cmix = time.time()
-                compressed_file=join(tmpPath,"cmix.seq")
-                cmp_sz = os.path.getsize(compressed_file)
-                elapsed_time_cmix=end_cmix-start_cmix
-                csvEntry["Cmix_comp"] = str(cmp_sz/original_sz*2)
-                csvEntry["Cmix_time"] = elapsed_time_cmix
+                #start_cmix = time.time()
+                #os.system(f"{compressors_path}cmix -c {tmpPath}/GENOME_FILE {tmpPath}/cmix.seq")
+                #end_cmix = time.time()
+                #compressed_file=join(tmpPath,"cmix.seq")
+                #cmp_sz = os.path.getsize(compressed_file)
+                #elapsed_time_cmix=end_cmix-start_cmix
+                csvEntry["Cmix_comp"] = ""
+                csvEntry["Cmix_time"] = ""
 
                 #JARVIS
                 start_jarvis = time.time()
