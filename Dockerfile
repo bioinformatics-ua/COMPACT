@@ -31,7 +31,7 @@ RUN conda install anaconda-client --yes
 
 RUN conda install -c bioconda libgcc --yes
 
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r requirements.pip
 
 RUN chmod +x ./*sh
 
