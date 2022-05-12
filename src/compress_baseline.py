@@ -86,8 +86,8 @@ def getCompressionValues():
                 compressed_file=join(tmpPath,"seq.zstd")
                 cmp_sz = os.path.getsize(compressed_file)
                 elapsed_time_zstd=end_zstd-start_zstd
-                csvEntry["zstd_comp"] = str(cmp_sz/decompressed_sz*2)
-                csvEntry["zstd_time"] = elapsed_time_zstd
+                csvEntry["zstd_comp"] = str(cmp_sz/decompressed_sz)
+                csvEntry["zstd_time"] = str(elapsed_time_zstd)
 
                 #XZ
                 start_xz = time.time()
@@ -96,8 +96,8 @@ def getCompressionValues():
                 compressed_file=join(tmpPath,"decompressed.fna.xz")
                 cmp_sz = os.path.getsize(compressed_file)
                 elapsed_time_xz=end_xz-start_xz
-                csvEntry["xz_comp"] = str(cmp_sz/decompressed_sz*2)
-                csvEntry["xz_time"] = elapsed_time_xz
+                csvEntry["xz_comp"] = str(cmp_sz/decompressed_sz)
+                csvEntry["xz_time"] = str(elapsed_time_xz)
 
 
                 #ZIP
@@ -107,8 +107,8 @@ def getCompressionValues():
                 compressed_file=join(tmpPath,"seq.zip")
                 cmp_sz = os.path.getsize(compressed_file)
                 elapsed_time_zip=end_zip-start_zip
-                csvEntry["zip_comp"] = str(cmp_sz/decompressed_sz*2)
-                csvEntry["zip_time"] = elapsed_time_zip
+                csvEntry["zip_comp"] = str(cmp_sz/decompressed_sz)
+                csvEntry["zip_time"] = str(elapsed_time_zip)
 
                 #BZIP2
                 start_bzip2 = time.time()
@@ -117,8 +117,8 @@ def getCompressionValues():
                 compressed_file=join(tmpPath,"decompressed.fna.bz2")
                 cmp_sz = os.path.getsize(compressed_file)
                 elapsed_time_bzip2=end_bzip2-start_bzip2
-                csvEntry["bzip2_comp"] = str(cmp_sz/decompressed_sz*2)
-                csvEntry["bzip2_time"] = elapsed_time_bzip2
+                csvEntry["bzip2_comp"] = str(cmp_sz/decompressed_sz)
+                csvEntry["bzip2_time"] = str(elapsed_time_bzip2)
 
                 #GZIP
                 start_gzip = time.time()
@@ -127,8 +127,8 @@ def getCompressionValues():
                 compressed_file=join(tmpPath,"seq_gzip.gz")
                 cmp_sz = os.path.getsize(compressed_file)
                 elapsed_time_gzip=end_gzip-start_gzip
-                csvEntry["gzip_comp"] = str(cmp_sz/decompressed_sz*2)
-                csvEntry["gzip_time"] = elapsed_time_gzip
+                csvEntry["gzip_comp"] = str(cmp_sz/decompressed_sz)
+                csvEntry["gzip_time"] = str(elapsed_time_gzip)
                 
                 #NUHT
                 start_nuht = time.time()
@@ -137,8 +137,8 @@ def getCompressionValues():
                 compressed_file=join(tmpPath,"decompress.nuht")
                 cmp_sz = os.path.getsize(compressed_file)
                 elapsed_time_nuht=end_nuht-start_nuht
-                csvEntry["NUHT_comp"] = str(cmp_sz/decompressed_sz*2)
-                csvEntry["NUHT_time"] = elapsed_time_nuht
+                csvEntry["NUHT_comp"] = str(cmp_sz/decompressed_sz)
+                csvEntry["NUHT_time"] = str(elapsed_time_nuht)
                 
                 #UHT
                 start_uht = time.time()
@@ -147,8 +147,8 @@ def getCompressionValues():
                 compressed_file=join(tmpPath,"decompress_1.uht")
                 cmp_sz = os.path.getsize(compressed_file)
                 elapsed_time_uht=end_uht-start_uht
-                csvEntry["UHT_comp"] = str(cmp_sz/decompressed_sz*2)
-                csvEntry["UHT_time"] = elapsed_time_uht
+                csvEntry["UHT_comp"] = str(cmp_sz/decompressed_sz)
+                csvEntry["UHT_time"] = str(elapsed_time_uht)
 
 
                 #MFCompress
@@ -158,8 +158,8 @@ def getCompressionValues():
                 compressed_file=join(tmpPath,"x.fa.mfc")
                 cmp_sz = os.path.getsize(compressed_file)
                 elapsed_time_mfc = end_mfc-start_mfc
-                csvEntry["MFCompress_comp"] = str(cmp_sz/fa_sz*2)
-                csvEntry["MFCompress_time"] = elapsed_time_mfc
+                csvEntry["MFCompress_comp"] = str(cmp_sz/fa_sz)
+                csvEntry["MFCompress_time"] = str(elapsed_time_mfc)
 
                 #CMIX
                 #start_cmix = time.time()
@@ -178,8 +178,8 @@ def getCompressionValues():
                 compressed_file=join(tmpPath,"GENOME_FILE.jc")
                 cmp_sz = os.path.getsize(compressed_file)
                 elapsed_time_jarvis=end_jarvis-start_jarvis
-                csvEntry["JARVIS_comp"] = str(cmp_sz/original_sz*2)
-                csvEntry["JARVIS_time"] = elapsed_time_jarvis
+                csvEntry["JARVIS_comp"] = str(cmp_sz/original_sz)
+                csvEntry["JARVIS_time"] = str(elapsed_time_jarvis)
                 
                 #GeCo3
                 start_geco = time.time()
@@ -189,8 +189,10 @@ def getCompressionValues():
                 os.system(f"cat {tmpPath}/RESULTS_GECO")
                 with open(join(tmpPath, "RESULTS_GECO"), 'r') as fp:
                     try:
-                        csvEntry["GeCo3_comp"] = str(float(fp.read().split(" ")[7])/2)
-                        csvEntry["GeCo3_time"] = elapsed_time_geco
+                        compressed_file=join(tmpPath,"GENOME_FILE.co")
+                        cmp_geco = os.path.getsize(compressed_file)
+                        csvEntry["GeCo3_comp"] = str(cmp_geco/original_sz)
+                        csvEntry["GeCo3_time"] = str(elapsed_time_geco)
                     except:
                         print(f"WARNING: DNA of {name} was not computed! Maybe lack of free space in RAM!")
                         csvEntry["GeCo3_comp"] = "1"
