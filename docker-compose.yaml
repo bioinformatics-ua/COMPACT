@@ -8,3 +8,12 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/compact/
+    networks:
+      - all
+
+networks:
+  all:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.3.0.0/16
