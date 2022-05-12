@@ -136,7 +136,7 @@ def getCompressionValues():
                 start_nuht = time.time()
                 os.system(f'{compressors_path}NUHT_Compress  {tmpPath}/decompressed.fna')
                 end_nuht = time.time()
-                compressed_file=join(tmpPath,"decompress.nhuht")
+                compressed_file=join(tmpPath,"decompress.nuht")
                 cmp_sz = os.path.getsize(compressed_file)
                 elapsed_time_nuht=end_nuht-start_nuht
                 csvEntry["NUHT_comp"] = str(cmp_sz/decompressed_sz*2)

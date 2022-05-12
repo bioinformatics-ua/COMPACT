@@ -60,7 +60,9 @@ NAF_Installation() {
 NUHT_Installation() {
     cd $compressor_files_path
     git clone https://github.uconn.edu/sya12005/Non-Greedy-Unbalanced-Huffman-Tree-Compressor-for-single-and-multi-fasta-files.git
-    cd "..";
+    cd Non-Greedy-Unbalanced-Huffman-Tree-Compressor-for-single-and-multi-fasta-files
+    mv Linux/NUHT_Compress "../../${compressor_path}/NUHT_Compress"
+    cd "../.."
 }
 
 conda install -c conda-forge libgcc-ng --yes
