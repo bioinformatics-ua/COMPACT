@@ -25,8 +25,6 @@ Name = "compression_time"
 percentages = [0,1,2,4,6,8,10]
 tmpDir = os.path.join(root, "tmp/")
 tmpSeqPath = join("..","tmpSq")
-domains = ["viral", "bacteria", "archaea", "fungi", "plant", "protozoa"]
-
 
 def main():
     _initialize()
