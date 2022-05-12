@@ -1,6 +1,8 @@
 *.DS_Store
-aux/references/*
-aux/original_sequences/*
+aux/*
+!aux/summaries/
+
 compressors/*
 compressors_files/*
+baseline_features/*
 src/__pycache__/
