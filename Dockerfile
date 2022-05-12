@@ -31,10 +31,12 @@ RUN conda install anaconda-client --yes
 
 RUN conda install -c bioconda libgcc --yes
 
+RUN pip3 install -r requirements.txt
+
+RUN chmod +x ./*sh
+
 ADD . /compact 
 
 WORKDIR /compact
-
-RUN chmod +x ./*sh
 
 CMD tail -f >> /dev/null
