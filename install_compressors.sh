@@ -14,9 +14,7 @@ Cmix_Installation() {
     wget https://github.com/byronknoll/cmix/archive/refs/tags/v19.1.zip -P ${compressor_files_path}
     unzip ${compressor_files_path}/v19.1.zip 
     cd cmix-19.1/ 
-    chmod +x cmix
     make
-    pwd
     cp cmix "../${compressor_path}"
     cd ..
     mv cmix-19.1/ ${compressor_files_path}
