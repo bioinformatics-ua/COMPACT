@@ -71,6 +71,11 @@ python3 classifier.py -b > ../results/f1score_accuracy_single.txt
 python3 classifier.py -cr > ../results/classification_reports_single.txt
 ```
 
+-> Classification report for all possible feature combinations
+```
+python3 classifier.py -bf -b > ../results/classification_report_all_combinations.txt
+```
+
 -> Classification report for all compressors
 ```
 python3 classifier.py -cr -ac > ../results/classification_report_all_columns.txt
