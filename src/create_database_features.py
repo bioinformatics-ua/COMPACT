@@ -32,8 +32,7 @@ def writeCSVLine(line):
     f.close()
 
 def getCompressionValues():
-    writeCSVLine(["Domain","bzip2_comp","gzip_comp","zip_comp","xz_comp","zstd_comp"])
-    
+    writeCSVLine(["Domain","bzip2_comp","JARVIS_comp","MFCompress_comp","NUHT_comp","zstd_comp"])
     for domain in listdir(mergedPath):
         print(f"Computing {domain}...")
         tmpPath = join(tmpDir,domain)
@@ -45,7 +44,7 @@ def getCompressionValues():
             name = fileName.replace(".fna.gz", "")
             csvEntry = {
                 "Domain": domain,
-                "bzip2_comp": None,"gzip_comp": None,"zip_comp": None,"xz_comp": None,"zstd_comp": None
+                "bzip2_comp": None,"JARVIS_comp": None,"MFCompress_comp": None,"NUHT_comp": None,"zstd_comp": None,
             }
 
             print(f"\tFile {fileName}")
@@ -69,35 +68,32 @@ def getCompressionValues():
                 cmp_sz = os.path.getsize(compressed_file)
                 csvEntry["zstd_comp"] = str(cmp_sz/decompressed_sz)
 
-                #XZ
-                os.system(f'xz -k -9 {tmpPath}/decompressed.fna')
-                compressed_file=join(tmpPath,"decompressed.fna.xz")
-                cmp_sz = os.path.getsize(compressed_file)
-                csvEntry["xz_comp"] = str(cmp_sz/decompressed_sz)
-
-
-                #ZIP
-                os.system(f'zip -9 {tmpPath}/seq.zip {tmpPath}/decompressed.fna')
-                compressed_file=join(tmpPath,"seq.zip")
-                cmp_sz = os.path.getsize(compressed_file)
-                csvEntry["zip_comp"] = str(cmp_sz/decompressed_sz)
-
                 #BZIP2
                 os.system(f'bzip2 -k -9 {tmpPath}/decompressed.fna')
                 compressed_file=join(tmpPath,"decompressed.fna.bz2")
                 cmp_sz = os.path.getsize(compressed_file)
                 csvEntry["bzip2_comp"] = str(cmp_sz/decompressed_sz)
-
-                #GZIP
-                os.system(f'gzip -c {tmpPath}/decompressed.fna > {tmpPath}/seq_gzip.gz')
-                compressed_file=join(tmpPath,"seq_gzip.gz")
+                
+                #NUHT
+                os.system(f'{compressors_path}NUHT_Compress  {tmpPath}/decompressed.fna')
+                compressed_file=join(tmpPath,"decompress.nuht")
                 cmp_sz = os.path.getsize(compressed_file)
-                csvEntry["gzip_comp"] = str(cmp_sz/decompressed_sz)
-               
+                csvEntry["NUHT_comp"] = str(cmp_sz/decompressed_sz)
+
+                #MFCompress
+                os.system(f"{compressors_path}MFCompressC -3 {tmpPath}/x.fa")
+                compressed_file=join(tmpPath,"x.fa.mfc")
+                cmp_sz = os.path.getsize(compressed_file)
+                csvEntry["MFCompress_comp"] = str(cmp_sz/fa_sz)
+
+                #JARVIS
+                os.system(f"JARVIS -l 3 {tmpPath}/GENOME_FILE ")
+                compressed_file=join(tmpPath,"GENOME_FILE.jc")
+                cmp_sz = os.path.getsize(compressed_file)
+                csvEntry["JARVIS_comp"] = str(cmp_sz/original_sz)
+
                 os.system(f"rm {tmpPath}/*")
                 writeCSVLine(csvEntry.values())
-
-
 
 def _initialize():
     if not path.exists(root):
