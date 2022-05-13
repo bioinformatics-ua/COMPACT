@@ -8,4 +8,4 @@ locationOfDatabases = (base_path / "../aux/references").resolve()
 dstPathOfDatabaseSequences = (base_path / "../aux/database_sequences").resolve()
 
 featuresFilePath = (base_path / "../results/features.csv").resolve()
-numIterations = 2
+numIterations = 10

@@ -4,12 +4,16 @@ import warnings
 from xgboost import XGBClassifier 
 from sklearn.metrics import accuracy_score, classification_report, f1_score 
 from sklearn.model_selection import train_test_split
+from sklearn.svm import LinearSVC
+from sklearn.feature_selection import SelectFromModel
+from sklearn.ensemble import ExtraTreesClassifier
 import csv
 import sys
 import numpy as np
 import os
 from config import featuresFilePath, numIterations
 import argparse
+from statistics import mean
 
 compressor = {
     0:"bzip2",
@@ -52,6 +56,14 @@ def Classify(args, columns):
     f1score_XGB = []
     data, labels = ReadData(args.filename, columns)
 
+    if args.features_selection:
+        clf = ExtraTreesClassifier(n_estimators=50)
+        clf = clf.fit(data, labels)
+        model = SelectFromModel(clf, prefit=True)
+        print(data.shape)
+        data = model.transform(data)
+        print(data.shape)
+
     for a in range(numIterations):
         X_train, X_test, y_train, y_test = train_test_split(data, labels, test_size=0.20, stratify=labels, random_state=a)
         model = XGBClassifier(max_depth=12, learning_rate=0.89, n_estimators=500, eval_metric='mlogloss')
@@ -60,6 +72,9 @@ def Classify(args, columns):
         predictions = [round(value) for value in y_pred]
         accuracy_XGB.append(accuracy_score(y_test, predictions))
         f1score_XGB.append(f1_score(y_test, y_pred, average='weighted'))
+        if args.classification_report:
+            print(classification_report(y_pred, predictions, target_names=domains, digits=4))
+            sys.exit()
 
     if args.accuracy:
         print("Accuracy of XGB, using:", end=" ")
@@ -75,6 +90,7 @@ def Classify(args, columns):
         print(sum(accuracy_XGB)/len(accuracy_XGB))
         print("F1 score of XGB")
         print(sum(f1score_XGB)/len(f1score_XGB))
+        
 
 
 def help(show=False):
@@ -89,6 +105,12 @@ def help(show=False):
                             help='This flag produces the classificarion report using the Accuracy metric (default: False)')
     helper.add_argument('-b', '--both', default=False, action='store_true', \
                             help='This flag produces the classificarion report using the both metrics (default: False)') 
+    helper.add_argument('-fs', '--features-selection', default=False, action='store_true', \
+                            help='This flag performs feature selection (default: False)') 
+    helper.add_argument('-ac', '--all-columns', default=False, action='store_true', \
+                            help='This flag classifies using all features (default: False)') 
+    helper.add_argument('-cr', '--classification-report', default=False, action='store_true', \
+                            help='This flag generates the classification report (default: False)') 
     if show:
         parser.print_help()
     return parser.parse_args()
@@ -96,9 +118,16 @@ def help(show=False):
 
 if __name__ == "__main__":
     args = help()
-    if args.accuracy or args.f1_score or args.both:
-        for column in range(5):
-            Classify(args, [column])
+    if args.accuracy or args.f1_score or args.both or args.classification_report:
+        if args.all_columns:
+            Classify(args, [0,1,2,3,4])
+        else:
+            for column in range(5):
+                Classify(args, [column])
         #Classify(args, [0,1])
     else:
         help(True)
+    """
+    TO DO:
+    - matriz de confusao
+    """
