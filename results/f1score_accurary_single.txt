@@ -1,0 +1,24 @@
+Accuracy of XGB, using: bzip2
+0.41555555555555557
+F1 score of XGB, using: bzip2
+0.41564616554287603
+
+Accuracy of XGB, using: JARVIS
+0.45999999999999996
+F1 score of XGB, using: JARVIS
+0.4597807603897809
+
+Accuracy of XGB, using: MFCompress
+0.41555555555555557
+F1 score of XGB, using: MFCompress
+0.41192278145343425
+
+Accuracy of XGB, using: NUHT
+0.31
+F1 score of XGB, using: NUHT
+0.3044439534212887
+
+Accuracy of XGB, using: zstd
+0.48888888888888893
+F1 score of XGB, using: zstd
+0.4856846073190254

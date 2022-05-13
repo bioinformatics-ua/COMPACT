@@ -1,0 +1,4 @@
+Accuracy of XGB, using: bzip2 JARVIS MFCompress NUHT zstd
+0.7233333333333334
+F1 score of XGB, using: bzip2 JARVIS MFCompress NUHT zstd
+0.7243995337349532

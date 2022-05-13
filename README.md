@@ -48,3 +48,25 @@ For baseline compression test run:
 cd src/
 python3 compress_baseline.py
 ```
+
+## Classifiers
+
+-> Feature selection for f1 and accuracy
+```
+python3 classifier.py -fs -ac -b > results/feature_selection.txt
+```
+
+-> All columns for f1 and accuracy
+```
+python3 classifier.py -ac -b > results/f1score_accuracy_all_columns.txt
+```
+
+-> Each column individually for f1 and accuracy
+```
+python3 classifier.py -b > results/f1score_accuracy_single.txt
+```
+
+-> Classification report for each compressor
+```
+python3 classifier.py -cr > results/classification_reports.txt
+```

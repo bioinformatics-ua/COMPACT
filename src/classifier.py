@@ -73,8 +73,10 @@ def Classify(args, columns):
         accuracy_XGB.append(accuracy_score(y_test, predictions))
         f1score_XGB.append(f1_score(y_test, y_pred, average='weighted'))
         if args.classification_report:
-            print(classification_report(y_pred, predictions, target_names=domains, digits=4))
-            sys.exit()
+            print("Classification report, using:", end=" ")
+            print(" ".join([compressor[x] for x in columns]))
+            print(classification_report(y_test, y_pred, target_names=domains, digits=4))
+            break
 
     if args.accuracy:
         print("Accuracy of XGB, using:", end=" ")
@@ -82,14 +84,18 @@ def Classify(args, columns):
         print(sum(accuracy_XGB)/len(accuracy_XGB))
 
     elif args.f1_score:
-        print("F1 score of XGB")
+        print("F1 score of XGB, using:", end=" ")
+        print(" ".join([compressor[x] for x in columns]))
         print(sum(f1score_XGB)/len(f1score_XGB))
     
     elif args.both:
-        print("Accuracy of XGB")
+        print("Accuracy of XGB, using:", end=" ")
+        print(" ".join([compressor[x] for x in columns]))
         print(sum(accuracy_XGB)/len(accuracy_XGB))
-        print("F1 score of XGB")
+        print("F1 score of XGB, using:", end=" ")
+        print(" ".join([compressor[x] for x in columns]))
         print(sum(f1score_XGB)/len(f1score_XGB))
+    print()
         
 
 
