@@ -7,6 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.svm import LinearSVC
 from sklearn.feature_selection import SelectFromModel
 from sklearn.ensemble import ExtraTreesClassifier
+from itertools import combinations
 import csv
 import sys
 import numpy as np
@@ -117,6 +118,8 @@ def help(show=False):
                             help='This flag classifies using all features (default: False)') 
     helper.add_argument('-cr', '--classification-report', default=False, action='store_true', \
                             help='This flag generates the classification report (default: False)') 
+    helper.add_argument('-bf', '--brute-force', default=False, action='store_true', \
+                            help='This flag performs brute force classification of all possible combination of features (default: False)') 
     if show:
         parser.print_help()
     return parser.parse_args()
@@ -127,6 +130,12 @@ if __name__ == "__main__":
     if args.accuracy or args.f1_score or args.both or args.classification_report:
         if args.all_columns:
             Classify(args, [0,1,2,3,4])
+        
+        elif args.brute_force:
+            all_comb_list=[]
+            for x in range(1,5,1):
+                com_list = list(combinations(range(5), x+1))
+                [Classify(args,list(ele)) for ele in com_list]
         else:
             for column in range(5):
                 Classify(args, [column])
