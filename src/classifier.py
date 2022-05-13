@@ -124,10 +124,5 @@ if __name__ == "__main__":
         else:
             for column in range(5):
                 Classify(args, [column])
-        #Classify(args, [0,1])
     else:
         help(True)
-    """
-    TO DO:
-    - matriz de confusao
-    """
