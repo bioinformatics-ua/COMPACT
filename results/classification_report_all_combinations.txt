@@ -1,0 +1,130 @@
+Accuracy of XGB, using: bzip2 JARVIS
+0.6211111111111112
+F1 score of XGB, using: bzip2 JARVIS
+0.6199513953159311
+
+Accuracy of XGB, using: bzip2 MFCompress
+0.6044444444444445
+F1 score of XGB, using: bzip2 MFCompress
+0.6054908873920949
+
+Accuracy of XGB, using: bzip2 NUHT
+0.5355555555555556
+F1 score of XGB, using: bzip2 NUHT
+0.5350916472124395
+
+Accuracy of XGB, using: bzip2 zstd
+0.5755555555555555
+F1 score of XGB, using: bzip2 zstd
+0.5767410245132741
+
+Accuracy of XGB, using: JARVIS MFCompress
+0.47777777777777775
+F1 score of XGB, using: JARVIS MFCompress
+0.47675994624361245
+
+Accuracy of XGB, using: JARVIS NUHT
+0.5188888888888888
+F1 score of XGB, using: JARVIS NUHT
+0.5185617735156546
+
+Accuracy of XGB, using: JARVIS zstd
+0.6511111111111112
+F1 score of XGB, using: JARVIS zstd
+0.6521405272741536
+
+Accuracy of XGB, using: MFCompress NUHT
+0.5355555555555556
+F1 score of XGB, using: MFCompress NUHT
+0.5345397066680759
+
+Accuracy of XGB, using: MFCompress zstd
+0.6422222222222224
+F1 score of XGB, using: MFCompress zstd
+0.6455548146952979
+
+Accuracy of XGB, using: NUHT zstd
+0.5622222222222222
+F1 score of XGB, using: NUHT zstd
+0.5602367410859522
+
+Accuracy of XGB, using: bzip2 JARVIS MFCompress
+0.6322222222222222
+F1 score of XGB, using: bzip2 JARVIS MFCompress
+0.632231965468944
+
+Accuracy of XGB, using: bzip2 JARVIS NUHT
+0.6644444444444446
+F1 score of XGB, using: bzip2 JARVIS NUHT
+0.6636234109737686
+
+Accuracy of XGB, using: bzip2 JARVIS zstd
+0.678888888888889
+F1 score of XGB, using: bzip2 JARVIS zstd
+0.6800081184547373
+
+Accuracy of XGB, using: bzip2 MFCompress NUHT
+0.6655555555555557
+F1 score of XGB, using: bzip2 MFCompress NUHT
+0.6651799191393513
+
+Accuracy of XGB, using: bzip2 MFCompress zstd
+0.6666666666666667
+F1 score of XGB, using: bzip2 MFCompress zstd
+0.6671960580469605
+
+Accuracy of XGB, using: bzip2 NUHT zstd
+0.6333333333333334
+F1 score of XGB, using: bzip2 NUHT zstd
+0.6315009495431947
+
+Accuracy of XGB, using: JARVIS MFCompress NUHT
+0.5455555555555553
+F1 score of XGB, using: JARVIS MFCompress NUHT
+0.5462067977824574
+
+Accuracy of XGB, using: JARVIS MFCompress zstd
+0.6466666666666667
+F1 score of XGB, using: JARVIS MFCompress zstd
+0.6504149427571373
+
+Accuracy of XGB, using: JARVIS NUHT zstd
+0.6911111111111111
+F1 score of XGB, using: JARVIS NUHT zstd
+0.6914863678437715
+
+Accuracy of XGB, using: MFCompress NUHT zstd
+0.6877777777777778
+F1 score of XGB, using: MFCompress NUHT zstd
+0.6898226010164562
+
+Accuracy of XGB, using: bzip2 JARVIS MFCompress NUHT
+0.6733333333333335
+F1 score of XGB, using: bzip2 JARVIS MFCompress NUHT
+0.6725946108657987
+
+Accuracy of XGB, using: bzip2 JARVIS MFCompress zstd
+0.6833333333333333
+F1 score of XGB, using: bzip2 JARVIS MFCompress zstd
+0.6844834355823162
+
+Accuracy of XGB, using: bzip2 JARVIS NUHT zstd
+0.7066666666666668
+F1 score of XGB, using: bzip2 JARVIS NUHT zstd
+0.708039988883318
+
+Accuracy of XGB, using: bzip2 MFCompress NUHT zstd
+0.7166666666666667
+F1 score of XGB, using: bzip2 MFCompress NUHT zstd
+0.7185412252727379
+
+Accuracy of XGB, using: JARVIS MFCompress NUHT zstd
+0.6855555555555557
+F1 score of XGB, using: JARVIS MFCompress NUHT zstd
+0.6863780945089396
+
+Accuracy of XGB, using: bzip2 JARVIS MFCompress NUHT zstd
+0.7233333333333334
+F1 score of XGB, using: bzip2 JARVIS MFCompress NUHT zstd
+0.7243995337349532
+
