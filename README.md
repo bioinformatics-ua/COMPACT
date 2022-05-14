@@ -1,9 +1,9 @@
 # COMPACT
-COMPressor tAxonomic ClassificaTion
+<H2><b>COMPressor tAxonomic ClassificaTion</b></H2>
 
 
 ## Download Project
-Get CANVAS project using:
+Get COMPACT project using:
 ```bash
 git clone https://github.com/jorgeMFS/COMPACT.git
 cd COMPACT/
@@ -33,15 +33,15 @@ To run the pipeline and obtain all the Reports in the folder reports, use the fo
 
 
 
-## Download sequences
-For obtaining random sequences for performance test run:
+## Download sequences I
+For obtaining random sequences for baseline test performance run:
 
 ``` bash
 cd src/
 python3 getRandomSequences.py 
 ```
 
-## Bsseline test
+## Baseline test
 For baseline compression test run:
 
 ``` bash
@@ -49,34 +49,43 @@ cd src/
 python3 compress_baseline.py
 ```
 
+## Download sequences II
+For obtaining random sequences for taxonomic classification run:
+
+``` bash
+cd src/
+python3 getDatabaseSequences.py 
+```
+
 ## Classifiers
 
--> Feature selection for f1 and accuracy
-```
+### Feature selection for f1-score and accuracy
+
+```bash
 python3 classifier.py -fs -ac -b > ../results/feature_selection.txt
 ```
 
--> All columns for f1 and accuracy
-```
+### All columns for f1-score and accuracy
+```bash
 python3 classifier.py -ac -b > ../results/f1score_accuracy_all_columns.txt
 ```
 
--> Each column individually for f1 and accuracy
-```
+### Each column individually for f1-score and accuracy
+```bash
 python3 classifier.py -b > ../results/f1score_accuracy_single.txt
 ```
 
--> Classification report for each compressor
-```
+### Classification report for each compressor
+```bash
 python3 classifier.py -cr > ../results/classification_reports_single.txt
 ```
 
--> Classification report for all possible feature combinations
-```
+### Classification f1-score and accuracy for all possible feature combinations
+```bash
 python3 classifier.py -bf -b > ../results/classification_report_all_combinations.txt
 ```
 
--> Classification report for all compressors
-```
+### Classification report for all compressors
+```bash
 python3 classifier.py -cr -ac > ../results/classification_report_all_columns.txt
 ```
