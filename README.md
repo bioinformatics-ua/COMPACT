@@ -12,8 +12,7 @@ cd COMPACT/
 ## Using Docker
 To perform installation correctly, docker and docker compose must be installed in the system (see https://docs.docker.com/engine/install/ubuntu/). 
 
-
-Then follow these instructions:
+Then, follow these instructions:
 ```sh
 git clone https://github.com/jorgeMFS/COMPACT.git
 cd COMPACT
@@ -60,35 +59,48 @@ python3 getDatabaseSequences.py
 ### Feature selection for f1-score and accuracy
 
 ```bash
+cd src/
 python3 classifier.py -fs -ac -b > ../results/feature_selection.txt
 ```
 
 ### All columns for f1-score and accuracy
+
 ```bash
+cd src/
 python3 classifier.py -ac -b > ../results/f1score_accuracy_all_columns.txt
 ```
 
 ### Each column individually for f1-score and accuracy
+
 ```bash
+cd src/
 python3 classifier.py -b > ../results/f1score_accuracy_single.txt
 ```
 
 ### Classification report for each compressor
+
 ```bash
+cd src/
 python3 classifier.py -cr > ../results/classification_reports_single.txt
 ```
 
 ### Classification f1-score and accuracy for all possible feature combinations
+
 ```bash
+cd src/
 python3 classifier.py -bf -b > ../results/f1score_accuracy_all_combinations.txt
 ```
 
 ### Classification report for all compressors
+
 ```bash
+cd src/
 python3 classifier.py -cr -ac > ../results/classification_report_all_columns.txt
 ```
 
 ### Classification report for all compressors
+
 ```bash
-    python3 classifier.py -bf -cr > ../results/classification_report_all_combinations.txt
+cd src/
+python3 classifier.py -bf -cr > ../results/classification_report_all_combinations.txt
 ```
