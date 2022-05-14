@@ -31,8 +31,6 @@ bash install_compressors.sh;
 To run the pipeline and obtain all the Reports in the folder reports, use the following commands.
 
 
-
-
 ## Download sequences I
 For obtaining random sequences for baseline test performance run:
 
@@ -82,10 +80,15 @@ python3 classifier.py -cr > ../results/classification_reports_single.txt
 
 ### Classification f1-score and accuracy for all possible feature combinations
 ```bash
-python3 classifier.py -bf -b > ../results/classification_report_all_combinations.txt
+python3 classifier.py -bf -b > ../results/f1score_accuracy_all_combinations.txt
 ```
 
 ### Classification report for all compressors
 ```bash
 python3 classifier.py -cr -ac > ../results/classification_report_all_columns.txt
+```
+
+### Classification report for all compressors
+```bash
+    python3 classifier.py -bf -cr > ../results/classification_report_all_combinations.txt
 ```
