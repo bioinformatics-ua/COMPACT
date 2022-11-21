@@ -11,8 +11,8 @@ RUN wget \
     && bash Miniconda3-py39_4.11.0-Linux-x86_64.sh -b \
     && rm -f Miniconda3-py39_4.11.0-Linux-x86_64.sh
 
-RUN apt-get update -y && apt-get install -y bc
-
+RUN apt-get update -y && apt-get install -y bc 
+RUN apt-get install -y python3-pip
 RUN apt-get install -y zip 
 RUN apt-get install -y bzip2
 RUN apt-get install -y xz-utils 
@@ -31,12 +31,14 @@ RUN conda install anaconda-client --yes
 
 RUN conda install -c bioconda libgcc --yes
 
-RUN pip3 install -r requirements.pip
-
-RUN chmod +x ./*sh
-
 ADD . /compact 
 
 WORKDIR /compact
+
+RUN ls -l
+
+RUN chmod +x ./*sh
+
+RUN pip3 install -r requirements.pip
 
 CMD tail -f >> /dev/null
