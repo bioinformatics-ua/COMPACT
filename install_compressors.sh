@@ -20,6 +20,17 @@ Cmix_Installation() {
     mv cmix-19.1/ ${compressor_files_path}
 }
 
+brieflz_Installation(){
+    mkdir -p ${compressor_files_path}
+    wget https://github.com/jibsen/brieflz/archive/refs/tags/v1.3.0.zip -P ${compressor_files_path}
+    unzip -o ${compressor_files_path}v1.3.0.zip
+    cd brieflz-1.3.0/example
+    make
+    cp blzpack "../../${compressor_path}"
+    cd ../..
+    mv brieflz-1.3.0 ${compressor_files_path}
+}
+
 Pufferfish_Installation() {
     #./pufferfish -i <input file> -o <output file> [-c] | [-d]
     cd $compressor_files_path
@@ -68,8 +79,10 @@ NUHT_Installation() {
 conda install -c conda-forge libgcc-ng --yes
 conda install -y -c bioconda jarvis --yes
 conda install -c bioconda geco3 --yes
-# conda install -c bioconda naf --yes
+conda install -c bioconda naf --yes
 conda install -c cobilab gto --yes 
+brieflz_Installation;
+
 UHT_Installation;
 MFCompress_Installation;
 UHT_Installation;
