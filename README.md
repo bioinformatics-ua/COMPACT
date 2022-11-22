@@ -117,7 +117,13 @@ python3 classifier.py -bf -cr > ../results/classification_report_all_combination
 Please cite the following, if you use TranSMART-Migrator in your work:
 
 ```bib
-in progress
+@inproceedings{silva2022value,
+  title={The value of compression for taxonomic identification},
+  author={Silva, Jorge Miguel and Almeida, Joao Rafael},
+  booktitle={2022 IEEE 35th International Symposium on Computer-Based Medical Systems (CBMS)},
+  pages={276--281},
+  year={2022},
+  organization={IEEE}
 ```
 
 ### Issues
