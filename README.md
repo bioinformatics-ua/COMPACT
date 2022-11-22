@@ -114,7 +114,7 @@ python3 classifier.py -bf -cr > ../results/classification_report_all_combination
 
 ### Cite
 
-Please cite the following, if you use TranSMART-Migrator in your work:
+Please cite the following, if you use COMPACT in your work:
 
 ```bib
 @inproceedings{silva2022value,
