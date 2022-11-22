@@ -31,6 +31,17 @@ brieflz_Installation(){
     mv brieflz-1.3.0 ${compressor_files_path}
 }
 
+Lizard_Installation(){
+    mkdir -p ${compressor_files_path}
+    wget https://github.com/inikep/lizard/archive/refs/tags/v1.0.zip -P ${compressor_files_path}
+    unzip -o ${compressor_files_path}v1.0.zip
+    cd lizard-1.0
+    make
+    cp lizard "../${compressor_path}"
+    cd ../
+    mv lizard-1.0 ${compressor_files_path}
+}
+
 Brotli__Installation(){
 # This specification defines a lossless compressed data format that
 #    compresses data using a combination of the LZ77 algorithm and Huffman
@@ -51,6 +62,19 @@ Brotli__Installation(){
     mv brotli-1.0.9 ${compressor_files_path}
 }
 
+Libbsc_Installation() {
+    #bsc is a high performance file compressor based on lossless,
+    #block-sorting data compression algorithms.
+    mkdir -p ${compressor_files_path}
+    wget  https://github.com/IlyaGrebnov/libbsc/archive/refs/tags/v3.2.4.zip -P ${compressor_files_path}
+    unzip -o ${compressor_files_path}/v3.2.4.zip
+    cd libbsc-3.2.4/
+    make
+    cp bsc "../${compressor_path}"
+    cd ../
+    mv libbsc-3.2.4 ${compressor_files_path}
+
+}
 Pufferfish_Installation() {
     #./pufferfish -i <input file> -o <output file> [-c] | [-d]
     cd $compressor_files_path
@@ -96,7 +120,7 @@ NUHT_Installation() {
     cd "../.."
 }
 
-Brotli__Installation;
+Lizard_Installation;
 exit
 conda install -c conda-forge libgcc-ng --yes
 conda install -y -c bioconda jarvis --yes
@@ -104,6 +128,8 @@ conda install -c bioconda geco3 --yes
 conda install -c bioconda naf --yes
 conda install -c cobilab gto --yes 
 
+Libbsc_Installation;
+Brotli__Installation;
 brieflz_Installation;
 UHT_Installation;
 MFCompress_Installation;
