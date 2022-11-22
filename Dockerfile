@@ -27,6 +27,10 @@ RUN apt-get install -y clang
 
 RUN apt-get install -y git
 
+RUN apt-get install -y libssl-dev
+
+RUN DEBIAN_FRONTEND=noninteractive TZ=EUROPE/Portugal apt-get -y install cmake protobuf-compiler
+
 RUN conda install anaconda-client --yes
 
 RUN conda install -c bioconda libgcc --yes
@@ -40,5 +44,6 @@ RUN ls -l
 RUN chmod +x ./*sh
 
 RUN pip3 install -r requirements.pip
+
 
 CMD tail -f >> /dev/null
