@@ -41,6 +41,12 @@ Lizard_Installation(){
     cd ../
     mv lizard-1.0 ${compressor_files_path}
 }
+LZ4_Installation(){
+    mkdir -p ${compressor_files_path}
+    wget https://github.com/lz4/lz4/archive/refs/tags/v1.9.4.zip  -P ${compressor_files_path}
+    unzip -o ${compressor_files_path}v1.9.4.zip
+    
+}
 
 Brotli__Installation(){
 # This specification defines a lossless compressed data format that
