@@ -124,6 +124,7 @@ Please cite the following, if you use TranSMART-Migrator in your work:
   pages={276--281},
   year={2022},
   organization={IEEE}
+}
 ```
 
 ### Issues
